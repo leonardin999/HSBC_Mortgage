@@ -1,0 +1,13 @@
+==========Template Folder=============
+- Containing all of template files which are stable version and unchangable
+- Cotaining List of structure data
+==========Folder Temp=================
+- all the temporary files has been created in the bot operations
+==========Log=========================
+- all the log file and image capture of bots
+===========Output=====================
+- contain all kind of .extension: .xlsx, .doc, .png .. which are the outut result files
+===========Input======================
+- contain all kind of .extension: .xlsx, .doc, .png .. which are the input files
+
+Config.xlsx -> all configuration of the Bot (depend on the Company Set-up)

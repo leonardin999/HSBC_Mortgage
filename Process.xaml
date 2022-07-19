@@ -1,0 +1,356 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:fca="clr-namespace:FlaUI.Core.AutomationElements;assembly=FlaUI.Core" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:rac="clr-namespace:RCA.Activities.Core;assembly=RCA.Activities.Core" xmlns:ram="clr-namespace:RCA.Activities.Mail;assembly=RCA.Activities.Mail" xmlns:raw="clr-namespace:RCA.Activities.Windows;assembly=RCA.Activities.Windows" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ArrConfig" Type="InOutArgument(njl:JToken)" />
+    <x:Property Name="ArrMess" Type="InOutArgument(njl:JToken)" />
+    <x:Property Name="ArrAsset" Type="InOutArgument(njl:JToken)" />
+    <x:Property Name="IsSuccess" Type="InOutArgument(x:Boolean)" />
+    <x:Property Name="BotName" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>704,889.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Process_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>FlaUI.Core.AutomationElements</x:String>
+      <x:String>FlaUI.Core.AutomationElements.Infrastructure</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>RCA.Activities.Core</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Core</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Windows</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Excel</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Java</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Word</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Browser</AssemblyReference>
+      <AssemblyReference>RCA.Activities.IE</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Mail</AssemblyReference>
+      <AssemblyReference>RCA.Activities.GSuite</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>RCA.Activities.SAP</AssemblyReference>
+      <AssemblyReference>RCA.Activities.ActiveDirectory</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Catia</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>FlaUI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>Aka.RPA.Python</AssemblyReference>
+      <AssemblyReference>RCA.Activities.OCR</AssemblyReference>
+      <AssemblyReference>RCA.Activities.FTP</AssemblyReference>
+      <AssemblyReference>System.Interactive.Async</AssemblyReference>
+      <AssemblyReference>RCA.Activities.PCOMM</AssemblyReference>
+      <AssemblyReference>RCA.Activities.NativeBrowser</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="Process" sap:VirtualizedContainerService.HintSize="664,809.6" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="s:DateTime" Name="dtmDateProcess" />
+      <Variable x:TypeArguments="fca:AutomationElement" Name="control" />
+      <Variable x:TypeArguments="s:String[]" Name="ArrAccounts" />
+      <Variable x:TypeArguments="x:String" Name="BotFunctions" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,113.6</av:PointCollection>
+        <x:Double x:Key="Width">650</x:Double>
+        <x:Double x:Key="Height">773.59999999999991</x:Double>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID3</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_19">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,113.6</av:Point>
+          <av:Size x:Key="ShapeSize">200,52.4</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,166.4 300,203.6</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="Init Process" sap:VirtualizedContainerService.HintSize="200,52.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:Boolean" Name="IsSent" />
+          <Variable x:TypeArguments="scg:List(x:String)" Name="ArrListAttach" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign DisplayName="[914597852] Assign" sap:VirtualizedContainerService.HintSize="313.6,60.8" sap2010:WorkflowViewState.IdRef="Assign_10">
+          <Assign.To>
+            <OutArgument x:TypeArguments="s:DateTime">[dtmDateProcess]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="s:DateTime">[DateTime.Now]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <rac:LogMessage DisplayName="[336321877] Log Message" sap:VirtualizedContainerService.HintSize="313.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Process.xaml Init Process&quot;]" />
+        <Assign DisplayName="[882375857] Get Bot Functions" sap:VirtualizedContainerService.HintSize="313.6,60.8" sap2010:WorkflowViewState.IdRef="Assign_20">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[BotFunctions]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">Scrawling data from the Website and Structure collected data to the .xlsx file of format</InArgument>
+          </Assign.Value>
+        </Assign>
+        <rac:LogMessage DisplayName="[810596295] Log Message" sap:VirtualizedContainerService.HintSize="313.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Process.xaml: Extracting customer data from config &quot;]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </rac:LogMessage>
+        <rac:LogMessage DisplayName="[102332119] Log Message" sap:VirtualizedContainerService.HintSize="313.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Process.xaml  Extract customer data completed. &quot;]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </rac:LogMessage>
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_60">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,203.6</av:Point>
+              <av:Size x:Key="ShapeSize">200,52.4</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,256.4 300,283.6</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="[605779961] Sequence 1" sap:VirtualizedContainerService.HintSize="336,413.2" sap2010:WorkflowViewState.IdRef="Sequence_33">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <raw:TerminateProcess Process="{x:Null}" ContinueOnError="True" DisplayName="[184576645] Terminate Process" sap:VirtualizedContainerService.HintSize="314,22" sap2010:WorkflowViewState.IdRef="TerminateProcess_1" ProcessName="EXCEL" />
+            <rac:LogMessage DisplayName="[240279560] Log Message" sap:VirtualizedContainerService.HintSize="314,93.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Process.xaml - START -&quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </rac:LogMessage>
+            <rac:LogMessage DisplayName="[311283137] Log Message" sap:VirtualizedContainerService.HintSize="314,93.6" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Process.xaml - FINISH - &quot;]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </rac:LogMessage>
+          </Sequence>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_61">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">200,283.6</av:Point>
+                  <av:Size x:Key="ShapeSize">200,52.4</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">300,336.4 300,363.6</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="[683475306] Send Mail Reports" sap:VirtualizedContainerService.HintSize="200,52.4" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="MailSubjectTemplate" />
+                  <Variable x:TypeArguments="x:String" Name="MailContentTemplate" />
+                  <Variable x:TypeArguments="x:String" Name="strMailSubject" />
+                  <Variable x:TypeArguments="x:String" Name="SenderName" />
+                  <Variable x:TypeArguments="x:String" Name="RecieverName" />
+                  <Variable x:TypeArguments="x:String" Name="BotName" />
+                  <Variable x:TypeArguments="x:String" Name="strMailBody" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <rac:LogMessage DisplayName="[046924657] Log Message" sap:VirtualizedContainerService.HintSize="313.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Process.xaml - START - Send email sucess report &quot;]" />
+                <ram:GetAccounts DisplayName="[602209435] Get Outlook Accounts" sap:VirtualizedContainerService.HintSize="313.6,22.4" sap2010:WorkflowViewState.IdRef="GetAccounts_1" OutAccounts="[ArrAccounts]" />
+                <Assign DisplayName="[143539428] Get Bot Name" sap:VirtualizedContainerService.HintSize="313.6,60.8" sap2010:WorkflowViewState.IdRef="Assign_21">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[BotName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">AKABots.DataScrawler</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="[711736691] Assign" sap:VirtualizedContainerService.HintSize="313.6,60.8" sap2010:WorkflowViewState.IdRef="Assign_18">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[SenderName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">Hung Binh</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="[714262725] Assign" sap:VirtualizedContainerService.HintSize="313.6,60.8" sap2010:WorkflowViewState.IdRef="Assign_19">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[RecieverName]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">Mr.Christ</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <If Condition="[ArrConfig(&quot;EMAIL_RECIPIENTS_RESULTS_WHEN_SUCCESSFUL&quot;).ToString.Trim = &quot;&quot;]" DisplayName="[413836156] If" sap:VirtualizedContainerService.HintSize="313.6,52.8" sap2010:WorkflowViewState.IdRef="If_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Assign DisplayName="[530530570] Assign" sap:VirtualizedContainerService.HintSize="243.2,60.8" sap2010:WorkflowViewState.IdRef="Assign_12">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("EMAIL_RECIPIENTS_RESULTS_WHEN_SUCCESSFUL")]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="njl:JToken">[ArrAccounts(0)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </If.Then>
+                </If>
+                <Assign DisplayName="[747483960] Assign Mail Subject" sap:VirtualizedContainerService.HintSize="313.6,60.8" sap2010:WorkflowViewState.IdRef="Assign_13">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[MailSubjectTemplate]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[ArrMess("RESULT_MAIL_SUBJECT").ToString]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="[248936212] Mail Subject content" sap:VirtualizedContainerService.HintSize="313.6,60.8" sap2010:WorkflowViewState.IdRef="Assign_15">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strMailSubject]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[String.Format(MailSubjectTemplate,BotName,DateTime.Now.ToString("dd-mm-yyyy hh:mm:ss"))]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="[876038062] Assign Mail Body" sap:VirtualizedContainerService.HintSize="313.6,60.8" sap2010:WorkflowViewState.IdRef="Assign_14">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[MailContentTemplate]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[ArrMess("RESULT_MAIL_CONTENT").ToString]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign DisplayName="[679720507] Mail Body content" sap:VirtualizedContainerService.HintSize="313.6,60.8" sap2010:WorkflowViewState.IdRef="Assign_17">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[strMailBody]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[String.Format(MailContentTemplate, RecieverName, BotName, BotFunctions, SenderName)]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <ram:SendOutlookMail AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="[ArrAccounts(0)]" Body="[strMailBody]" DisplayName="[954349832] Send Outlook Mail" sap:VirtualizedContainerService.HintSize="313.6,52.8" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[strMailSubject]" To="[ArrConfig(&quot;EMAIL_RECIPIENTS_RESULTS_WHEN_SUCCESSFUL&quot;).ToString]">
+                  <ram:SendOutlookMail.Files>
+                    <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                  </ram:SendOutlookMail.Files>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ram:SendOutlookMail>
+                <rac:LogMessage DisplayName="[097703888] Log Message" sap:VirtualizedContainerService.HintSize="313.6,52.8" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Process.xaml - FINISH - Send email sucess report completed&quot;]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </rac:LogMessage>
+              </Sequence>
+              <FlowStep.Next>
+                <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_59">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">200,363.6</av:Point>
+                      <av:Size x:Key="ShapeSize">200,52.4</av:Size>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <rac:CommentOut sap:VirtualizedContainerService.HintSize="200,52.4" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                    <rac:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="358.4,603.2" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Sequence DisplayName="[979535151] VBA Example" sap:VirtualizedContainerService.HintSize="336,478.4" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <rac:LogMessage DisplayName="[243064156] Log Message" sap:VirtualizedContainerService.HintSize="313.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Start VBA example&quot;]" />
+                          <rac:InvokeWorkflowFile ContinueOnError="{x:Null}" WorkflowTimeout="{x:Null}" DisplayName="[982210194] Invoke Workflow File" sap:VirtualizedContainerService.HintSize="313.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" WorkflowFileName="Common\Example\CallVBAExample.xaml">
+                            <rac:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="njl:JToken" x:Key="ArrConfig">[ArrConfig]</InArgument>
+                            </rac:InvokeWorkflowFile.Arguments>
+                          </rac:InvokeWorkflowFile>
+                          <rac:LogMessage DisplayName="[254513461] Log Message" sap:VirtualizedContainerService.HintSize="313.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Finish VBA example&quot;]" />
+                        </Sequence>
+                      </Sequence>
+                    </rac:CommentOut.Body>
+                  </rac:CommentOut>
+                </FlowStep>
+              </FlowStep.Next>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+  </Flowchart>
+</Activity>

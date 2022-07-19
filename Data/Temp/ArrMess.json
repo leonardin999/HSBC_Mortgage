@@ -1,0 +1,7 @@
+{
+  "Config Key": "Config Value",
+  "RESULT_MAIL_SUBJECT": "[{0}] Report Bot operation status on {1}",
+  "RESULT_MAIL_CONTENT": "Dear <br>{0},<br/><br>\n{1} has completed the process with the missing of  <br>{2},<br/>, please check sharepoint for more detail.<div> Happy automation,Thanks<div/><div>{3}</div><br/>",
+  "ERROR_MAIL_SUBJECT": "[{0}] Report Bot Error status on {1}",
+  "ERROR_MAIL_CONTENT": "Dear <br>{0},<br/><br>\n{1} There is some kind of Exceptions have been detected on the current process , kindly check the attached files for more detail.<div> Happy automation,Thanks<div/><div>{2}</div><br/>"
+}

@@ -1,0 +1,733 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="ReadConfig"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
+ xmlns:rac="clr-namespace:RCA.Activities.Core;assembly=RCA.Activities.Core"
+ xmlns:rae="clr-namespace:RCA.Activities.Excel;assembly=RCA.Activities.Excel"
+ xmlns:re="clr-namespace:RCA.Excel;assembly=RCA.Activities.Excel"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="SystemError" Type="InOutArgument(s:Exception)" />
+    <x:Property Name="isSuccess" Type="InOutArgument(x:Boolean)" />
+    <x:Property Name="ArrConfig" Type="InOutArgument(njl:JToken)" />
+    <x:Property Name="ArrMess" Type="InOutArgument(njl:JToken)" />
+    <x:Property Name="ArrAsset" Type="InOutArgument(njl:JToken)" />
+    <x:Property Name="ArrParamater" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>ReadConfig_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>RCA.Activities.Core</x:String>
+      <x:String>RCA.Activities.Excel</x:String>
+      <x:String>RCA.Excel</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities.Debugger.Symbol</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Core</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Excel</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Browser</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Windows</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Mail</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>RCA.Activities.NativeBrowser</AssemblyReference>
+      <AssemblyReference>RCA.Activities.OCR</AssemblyReference>
+      <AssemblyReference>Aka.RPA.Python</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Java</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Word</AssemblyReference>
+      <AssemblyReference>RCA.Activities.IE</AssemblyReference>
+      <AssemblyReference>RCA.Activities.GSuite</AssemblyReference>
+      <AssemblyReference>RCA.Activities.FTP</AssemblyReference>
+      <AssemblyReference>RCA.Activities.SAP</AssemblyReference>
+      <AssemblyReference>RCA.Activities.ActiveDirectory</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Catia</AssemblyReference>
+      <AssemblyReference>RCA.Activities.PCOMM</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ReadConfig" sap2010:WorkflowViewState.IdRef="Sequence_15">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="ArrSheet02" />
+      <Variable x:TypeArguments="sd:DataTable" Name="ArrSheet03" />
+      <Variable x:TypeArguments="x:String" Name="strConfigKey" />
+      <Variable x:TypeArguments="x:String" Name="strConfigValue" />
+      <Variable x:TypeArguments="x:Int32" Name="intRowID" />
+      <Variable x:TypeArguments="x:String" Name="strDateFormat" />
+      <Variable x:TypeArguments="sd:DataTable" Name="ArrSheet01" />
+    </Sequence.Variables>
+    <Sequence DisplayName="Assign Default Sheet Value" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strDateFormat]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[ArrConfig("date_format").ToString()]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="njl:JToken">[ArrMess]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="njl:JToken">[CType(Newtonsoft.Json.Linq.JObject.Parse("{}"),Newtonsoft.Json.Linq.JToken)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+        <Assign.To>
+          <OutArgument x:TypeArguments="njl:JToken">[ArrAsset]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="njl:JToken">[CType(Newtonsoft.Json.Linq.JObject.Parse("{}"),Newtonsoft.Json.Linq.JToken)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_4">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[ArrSheet01]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable()]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[ArrSheet02]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable()]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap2010:WorkflowViewState.IdRef="Assign_6">
+        <Assign.To>
+          <OutArgument x:TypeArguments="sd:DataTable">[ArrSheet03]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable()]</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <TryCatch DisplayName="TryCatch-ReadConfig-01" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+      <TryCatch.Try>
+        <Sequence DisplayName="[891090321] Sequence" sap2010:WorkflowViewState.IdRef="Sequence_13">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="re:WorkbookApplication" Name="wb" />
+          </Sequence.Variables>
+          <TryCatch DisplayName="[891092314] Read  CONFIG_GENERAL" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch.Try>
+              <Sequence DisplayName="[891116230] Read CONFIG_GENERAL" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <rac:LogMessage DisplayName="[573213617] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;ReadConfig.xaml Read file Sheet CONFIG_GENERAL&quot;]" />
+                <rac:AppendLine DisplayName="[573216861] Append Line" FileName="[ArrConfig(&quot;root_log&quot;).ToString]" sap2010:WorkflowViewState.IdRef="AppendLine_1" Text="ReadConfig.xaml Read file Sheet CONFIG_GENERAL" />
+                <rae:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[ArrSheet01]" DisplayName="[900866619] Read Range" sap2010:WorkflowViewState.IdRef="ReadRange_1" PreserveFormat="False" SheetName="CONFIG_GENERAL" WorkbookPath="[ArrConfig(&quot;root_data&quot;).ToString()+&quot;Config.xlsx&quot;]" />
+                <rac:ForEachRow CurrentIndex="{x:Null}" DataTable="[ArrSheet01]" DisplayName="[891124224] For Each &lt;T&gt;" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                  <rac:ForEachRow.Body>
+                    <ActivityAction x:TypeArguments="sd:DataRow">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="item" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="[891126191] Body" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                        <Assign DisplayName="[891128166] Assign" sap2010:WorkflowViewState.IdRef="Assign_7">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[strConfigKey]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[item(1).ToString()]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign DisplayName="[891130172] Assign" sap2010:WorkflowViewState.IdRef="Assign_8">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[strConfigValue]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[item(2).ToString()]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <If Condition="[strConfigKey &lt;&gt;&quot;&quot;]" DisplayName="[891132168] If" sap2010:WorkflowViewState.IdRef="If_1">
+                          <If.Then>
+                            <Assign DisplayName="[891136150] Assign" sap2010:WorkflowViewState.IdRef="Assign_9">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="njl:JToken">[ArrConfig(strConfigKey)]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="njl:JToken">[strConfigValue]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </If.Then>
+                        </If>
+                      </Sequence>
+                    </ActivityAction>
+                  </rac:ForEachRow.Body>
+                </rac:ForEachRow>
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+                  </ActivityAction.Argument>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <rac:LogMessage DisplayName="[189757590] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error" Message="[&quot; ReadConfig.xaml &quot;+ex.Source+&quot;: &quot;+ex.Message]" />
+                    <rac:InvokeWorkflowFile ContinueOnError="{x:Null}" WorkflowTimeout="{x:Null}" DisplayName="WriteLog" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" WorkflowFileName="Framework\WriteLog.xaml">
+                      <rac:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="logContent">["ReadConfig.xaml "+ex.Source+": "+ex.Message]</InArgument>
+                        <InOutArgument x:TypeArguments="njl:JToken" x:Key="ArrConfig">[ArrConfig]</InOutArgument>
+                      </rac:InvokeWorkflowFile.Arguments>
+                    </rac:InvokeWorkflowFile>
+                    <rac:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" MessageBoxDuration="{x:Null}" Buttons="Ok" DisplayName="Lỗi đọc file config" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="Lỗi, không thể đọc được file data/config.xlsx nếu bạn đang mở, hãy đóng file này, hoặc kiểm tra lại đường dẫn của file" TopMost="True" />
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_10">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:Exception">[SystemError]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:Exception">[ex]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_11">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[isSuccess]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+          <TryCatch DisplayName="[891138146] Read CONFIG_MESS" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+            <TryCatch.Try>
+              <Sequence DisplayName="[891164052] Sequence" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="[891166044] Read-Sheet-02" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <rac:LogMessage DisplayName="[594698174] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;ReadConfig.xaml Read file Sheet CONFIG_MESS&quot;]" />
+                  <rac:AppendLine DisplayName="[594701428] Append Line" FileName="[ArrConfig(&quot;root_log&quot;).ToString]" sap2010:WorkflowViewState.IdRef="AppendLine_2" Text="ReadConfig.xaml Read file Sheet CONFIG_MESS" />
+                  <rae:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[ArrSheet02]" DisplayName="[956915472] Read Range" sap2010:WorkflowViewState.IdRef="ReadRange_2" PreserveFormat="False" SheetName="CONFIG_MESS" WorkbookPath="[ArrConfig(&quot;root_data&quot;).ToString()+&quot;Config.xlsx&quot;]" />
+                  <rac:ForEachRow CurrentIndex="{x:Null}" DataTable="[ArrSheet02]" DisplayName="[891174021] ForEachInMessage" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                    <rac:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="item" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="[891176009] Body" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <Assign DisplayName="[891178015] Assign" sap2010:WorkflowViewState.IdRef="Assign_12">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[strConfigKey]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[item(1).ToString()]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="[891180006] Assign" sap2010:WorkflowViewState.IdRef="Assign_13">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[strConfigValue]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[item(2).ToString()]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <If Condition="[strConfigKey &lt;&gt;&quot;&quot;]" DisplayName="[891182001] If" sap2010:WorkflowViewState.IdRef="If_2">
+                            <If.Then>
+                              <Assign DisplayName="[891185991] Assign" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="njl:JToken">[ArrMess(strConfigKey)]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="njl:JToken">[strConfigValue]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </If.Then>
+                          </If>
+                        </Sequence>
+                      </ActivityAction>
+                    </rac:ForEachRow.Body>
+                  </rac:ForEachRow>
+                </Sequence>
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+                  </ActivityAction.Argument>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8">
+                    <rac:LogMessage DisplayName="[198578134] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Error" Message="[&quot; ReadConfig.xaml &quot;+ex.Source+&quot;: &quot;+ex.Message]" />
+                    <rac:InvokeWorkflowFile ContinueOnError="{x:Null}" WorkflowTimeout="{x:Null}" DisplayName="Invoke Workflow File" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" WorkflowFileName="Framework\WriteLog.xaml">
+                      <rac:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="logContent">["ReadConfig.xaml "+ex.Source+": "+ex.Message]</InArgument>
+                        <InOutArgument x:TypeArguments="njl:JToken" x:Key="ArrConfig">[ArrConfig]</InOutArgument>
+                      </rac:InvokeWorkflowFile.Arguments>
+                    </rac:InvokeWorkflowFile>
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_15">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[isSuccess]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_16">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:Exception">[SystemError]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:Exception">[ex]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+          <TryCatch DisplayName="[891187989] READ CONFIG_ASSET" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+            <TryCatch.Try>
+              <Sequence DisplayName="[891215915] Sequence" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                <Sequence DisplayName="[891217906] Read-Sheet-03" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <rac:LogMessage DisplayName="[607966472] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;ReadConfig.xaml Read file Sheet CONFIG_ASSET&quot;]" />
+                  <rac:AppendLine DisplayName="[607970458] Append Line" FileName="[ArrConfig(&quot;root_log&quot;).ToString]" sap2010:WorkflowViewState.IdRef="AppendLine_3" Text="ReadConfig.xaml Read file Sheet CONFIG_ASSET" />
+                  <Assign DisplayName="[891223876] Assign" sap2010:WorkflowViewState.IdRef="Assign_17">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd:DataTable">[ArrSheet03]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd:DataTable">[New System.Data.DataTable]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <rae:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[ArrSheet03]" DisplayName="[998287308] Read Range" sap2010:WorkflowViewState.IdRef="ReadRange_3" PreserveFormat="False" SheetName="CONFIG_ASSET" WorkbookPath="[ArrConfig(&quot;root_data&quot;).ToString()+&quot;Config.xlsx&quot;]" />
+                  <rac:ForEachRow CurrentIndex="{x:Null}" DataTable="[ArrSheet03]" DisplayName="[891227746] For Each &lt;T&gt;" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                    <rac:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="item" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="[891229875] Body" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <Assign DisplayName="[891231873] Assign" sap2010:WorkflowViewState.IdRef="Assign_18">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[strConfigKey]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[item(1).ToString()]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign DisplayName="[891233864] Assign" sap2010:WorkflowViewState.IdRef="Assign_19">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[strConfigValue]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[item(2).ToString()]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <If Condition="[strConfigKey &lt;&gt;&quot;&quot;]" DisplayName="[891235858] If" sap2010:WorkflowViewState.IdRef="If_3">
+                            <If.Then>
+                              <Assign DisplayName="[891239838] Assign" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="njl:JToken">[ArrAsset(strConfigKey)]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="njl:JToken">[strConfigValue]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </If.Then>
+                          </If>
+                        </Sequence>
+                      </ActivityAction>
+                    </rac:ForEachRow.Body>
+                  </rac:ForEachRow>
+                </Sequence>
+              </Sequence>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+                  </ActivityAction.Argument>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_12">
+                    <rac:LogMessage DisplayName="[232040480] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Error" Message="[&quot; ReadConfig.xaml &quot;+ex.Source+&quot;: &quot;+ex.Message]" />
+                    <rac:InvokeWorkflowFile ContinueOnError="{x:Null}" WorkflowTimeout="{x:Null}" DisplayName="Invoke Workflow File" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" WorkflowFileName="Framework\WriteLog.xaml">
+                      <rac:InvokeWorkflowFile.Arguments>
+                        <InArgument x:TypeArguments="x:String" x:Key="logContent">["[ERROR] "+DateTime.Now.ToString(strDateFormat)+" Main.xaml "+ex.Source+": "+ex.Message]</InArgument>
+                        <InOutArgument x:TypeArguments="njl:JToken" x:Key="ArrConfig">[ArrConfig]</InOutArgument>
+                      </rac:InvokeWorkflowFile.Arguments>
+                    </rac:InvokeWorkflowFile>
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_21">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Boolean">[isSuccess]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_22">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:Exception">[SystemError]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:Exception">[ex]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+            </ActivityAction.Argument>
+            <Sequence sap2010:WorkflowViewState.IdRef="Sequence_14">
+              <rac:LogMessage DisplayName="[144345515] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Error" Message="[&quot; ReadConfig.xaml &quot;+ex.Source+&quot;: &quot;+ex.Message]" />
+              <rac:InvokeWorkflowFile ContinueOnError="{x:Null}" WorkflowTimeout="{x:Null}" DisplayName="Invoke Workflow File" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" WorkflowFileName="Framework\WriteLog.xaml">
+                <rac:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="logContent">["ReadConfig.xaml "+ex.Source+": "+ex.Message]</InArgument>
+                  <InOutArgument x:TypeArguments="njl:JToken" x:Key="ArrConfig">[ArrConfig]</InOutArgument>
+                </rac:InvokeWorkflowFile.Arguments>
+              </rac:InvokeWorkflowFile>
+              <rac:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" MessageBoxDuration="{x:Null}" Buttons="Ok" DisplayName="Lỗi đọc file config" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="Error, cannot read the file data / config.xlsx if you are open, close the file, or check the path of the file" TopMost="True" />
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_23">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="s:Exception">[SystemError]</OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="s:Exception">[ex]</InArgument>
+                </Assign.Value>
+              </Assign>
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <sads:DebugSymbol.Symbol>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</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="417.6,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="516.8,92.8" />
+      <sap2010:ViewStateData Id="AppendLine_1" sap:VirtualizedContainerService.HintSize="516.8,88" />
+      <sap2010:ViewStateData Id="ReadRange_1" sap:VirtualizedContainerService.HintSize="516.8,88" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,211.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="486.4,537.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_1" sap:VirtualizedContainerService.HintSize="516.8,686.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="539.2,1200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="313.6,92.8" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="MessageBox_1" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_11" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="336,646.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="542.4,22.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="313.6,92.8" />
+      <sap2010:ViewStateData Id="AppendLine_2" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="ReadRange_2" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Assign_12" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_13" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="Assign_14" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="243.2,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="265.6,379.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_2" sap:VirtualizedContainerService.HintSize="313.6,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="336,566.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="358.4,691.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_4" sap:VirtualizedContainerService.HintSize="313.6,92.8" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_2" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Assign_15" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_16" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="336,544">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_2" sap:VirtualizedContainerService.HintSize="403.2,22.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_2" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_5" sap:VirtualizedContainerService.HintSize="516.8,92.8" />
+      <sap2010:ViewStateData Id="AppendLine_3" sap:VirtualizedContainerService.HintSize="516.8,88" />
+      <sap2010:ViewStateData Id="Assign_17" sap:VirtualizedContainerService.HintSize="516.8,60.8" />
+      <sap2010:ViewStateData Id="ReadRange_3" sap:VirtualizedContainerService.HintSize="516.8,88" />
+      <sap2010:ViewStateData Id="Assign_18" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="Assign_19" sap:VirtualizedContainerService.HintSize="464,60.8" />
+      <sap2010:ViewStateData Id="Assign_20" sap:VirtualizedContainerService.HintSize="243.2,60.8" />
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="464,211.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="486.4,537.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEachRow_3" sap:VirtualizedContainerService.HintSize="516.8,686.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="539.2,1300.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="561.6,1425.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_6" sap:VirtualizedContainerService.HintSize="313.6,92.8" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_3" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Assign_21" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_22" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="336,547.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_3" sap:VirtualizedContainerService.HintSize="564.8,22.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_3" sap:VirtualizedContainerService.HintSize="200,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="222.4,363.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_7" sap:VirtualizedContainerService.HintSize="313.6,92.8" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_4" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="MessageBox_2" sap:VirtualizedContainerService.HintSize="313.6,59.2" />
+      <sap2010:ViewStateData Id="Assign_23" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Sequence_14" sap:VirtualizedContainerService.HintSize="336,545.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_4" sap:VirtualizedContainerService.HintSize="403.2,22.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_4" sap:VirtualizedContainerService.HintSize="417.6,595.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_15" sap:VirtualizedContainerService.HintSize="440,812.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadConfig_1" sap:VirtualizedContainerService.HintSize="480,972.8" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

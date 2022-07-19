@@ -1,0 +1,34 @@
+{
+  "Name": "HSBCMortgage",
+  "Description": "HSBC automation bot in mortgage process v1.0",
+  "ReleaseNotes": "",
+  "MainWorkflow": "Main.xaml",
+  "Dependencies": {
+    "RCA.Activities.Core": "2.2.0.0",
+    "RCA.Activities.NativeBrowser": "4.1.0.0",
+    "RCA.Activities.Excel": "2.1.0.4",
+    "RCA.Activities.Windows": "2.1.2.1",
+    "RCA.Activities.Mail": "2.1.0.3",
+    "RCA.Activities.Browser": "2.2.0",
+    "RCA.Activities.PDF": "2.1.0",
+    "RCA.Activities.IE": "2.1.2.1",
+    "RCA.Activities.iTextSharp": "1.0.0"
+  },
+  "ExcludedData": [
+    "Private:*",
+    "*password*"
+  ],
+  "ToolVersion": "2.2.0.1",
+  "ProjectVersion": "0.0.0.0",
+  "PackOptions": {},
+  "RuntimeOptions": {
+    "ChromeZoomFactor": 80,
+    "MachineScale": 125,
+    "DPI": 120,
+    "PhysicalScreenWidth": 1920,
+    "PhysicalScreenHeight": 1080
+  },
+  "ProjectDirectory": "D:\\Business Tasks\\HSBC mortgage\\RPA Source Code",
+  "ProjectFilePath": "D:\\Business Tasks\\HSBC mortgage\\RPA Source Code\\project.json",
+  "ScreenshotsFolder": "D:\\Business Tasks\\HSBC mortgage\\RPA Source Code\\.screenshots"
+}

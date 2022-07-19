@@ -1,0 +1,297 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="InitAllApplication"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
+ xmlns:rac="clr-namespace:RCA.Activities.Core;assembly=RCA.Activities.Core"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ArrConfig" Type="InOutArgument(njl:JToken)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>InitAllApplication_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Core</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Windows</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Excel</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Java</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Word</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Browser</AssemblyReference>
+      <AssemblyReference>RCA.Activities.IE</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Mail</AssemblyReference>
+      <AssemblyReference>RCA.Activities.GSuite</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>RCA.Activities.SAP</AssemblyReference>
+      <AssemblyReference>RCA.Activities.ActiveDirectory</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Catia</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>Aka.RPA.Python</AssemblyReference>
+      <AssemblyReference>RCA.Activities.FTP</AssemblyReference>
+      <AssemblyReference>RCA.Activities.NativeBrowser</AssemblyReference>
+      <AssemblyReference>RCA.Activities.OCR</AssemblyReference>
+      <AssemblyReference>RCA.Activities.PCOMM</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="InitAllApplication" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <rac:InvokeWorkflowFile ContinueOnError="{x:Null}" WorkflowTimeout="{x:Null}" DisplayName="[415943969] Invoke Workflow File" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" WorkflowFileName="Framework\ClearTempFolder.xaml">
+      <rac:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </rac:InvokeWorkflowFile.Arguments>
+    </rac:InvokeWorkflowFile>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[JObject.Parse("{}")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_path")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[(Environment.CurrentDirectory+"/").Replace("/","\")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence DisplayName="Create Folder" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <rac:CreateDirectory ContinueOnError="True" DisplayName="Create Folder Log" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[ArrConfig(&quot;root_path&quot;).ToString()+&quot;Data\Log\Images&quot;]" />
+      <rac:CreateDirectory ContinueOnError="True" DisplayName="Create Folder Temp" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[ArrConfig(&quot;root_path&quot;).ToString()+&quot;Data\Temp&quot;]" />
+      <rac:CreateDirectory ContinueOnError="True" DisplayName="Create Folder Output" sap2010:WorkflowViewState.IdRef="CreateDirectory_3" Path="[ArrConfig(&quot;root_path&quot;).ToString()+&quot;Data\Output&quot;]" />
+      <rac:CreateDirectory ContinueOnError="True" DisplayName="Create Folder Input" sap2010:WorkflowViewState.IdRef="CreateDirectory_4" Path="[ArrConfig(&quot;root_path&quot;).ToString()+&quot;Data\Input&quot;]" />
+      <rac:CreateDirectory ContinueOnError="True" DisplayName="Create Folder Template" sap2010:WorkflowViewState.IdRef="CreateDirectory_5" Path="[ArrConfig(&quot;root_path&quot;).ToString()+&quot;Data\Template&quot;]" />
+    </Sequence>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_log")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[(ArrConfig("root_path").ToString()+"Data\Log\Log_"+DateTime.Now.ToString("yyyy-MM-dd HHmmss")+".txt").ToString()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap2010:WorkflowViewState.IdRef="Assign_9">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_images")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[(ArrConfig("root_path").ToString()+"Data\Log\Images\").ToString()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign root output" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_output")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[ArrConfig("root_path").ToString()+"Data\Output\"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign root folder data" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_data")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[ArrConfig("root_path").ToString()+"Data\"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign root Input" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_input")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[ArrConfig("root_path").ToString()+"Data\Input\"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign root Temp" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_temp")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[ArrConfig("root_path").ToString()+"Data\Temp\"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign root template" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_template")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[ArrConfig("root_path").ToString()+"Data\Template\"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Assign" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("date_format")]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">["yyyy-MM-dd HHmmss"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <rac:CreateDirectory ContinueOnError="True" DisplayName="Create Directory" sap2010:WorkflowViewState.IdRef="CreateDirectory_6" Path="[ArrConfig(&quot;root_temp&quot;).ToString()+&quot;\SapScript\&quot;]" />
+    <rac:CommentOut DisplayName="[539313725] Center share folder" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <rac:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="strShareFolder" />
+          </Sequence.Variables>
+          <rac:InvokeWorkflowFile ContinueOnError="{x:Null}" WorkflowTimeout="{x:Null}" DisplayName="[594309381] Get share folder" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" WorkflowFileName="Framework\CenterAsset.xaml">
+            <rac:InvokeWorkflowFile.Arguments>
+              <InOutArgument x:TypeArguments="njl:JToken" x:Key="ArrConfig">[ArrConfig]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="strAssetName">CENTER_SHARE_FOLDER_PARAMATER</InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="strOutputAsset">[strShareFolder]</OutArgument>
+            </rac:InvokeWorkflowFile.Arguments>
+          </rac:InvokeWorkflowFile>
+          <Assign DisplayName="[599039808] Assign" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_share")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="njl:JToken">[strShareFolder]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <rac:LogMessage DisplayName="[112462141] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;InitAllApplication.xaml Share folder: &quot;+strShareFolder]" />
+          <Assign DisplayName="[617220862] Assign" sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign.To>
+              <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_input")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="njl:JToken">[strShareFolder+"Input\"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="[642695817] Assign" sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign.To>
+              <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_output")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="njl:JToken">[strShareFolder+"Output\"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="[655778476] Assign" sap2010:WorkflowViewState.IdRef="Assign_14">
+            <Assign.To>
+              <OutArgument x:TypeArguments="njl:JToken">[ArrConfig("root_temp")]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="njl:JToken">[strShareFolder+"temp\"]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <rac:CreateDirectory ContinueOnError="True" DisplayName="[863092430] Create output" sap2010:WorkflowViewState.IdRef="CreateDirectory_8" Path="[ArrConfig(&quot;root_output&quot;).ToString()]" />
+          <rac:CreateDirectory ContinueOnError="{x:Null}" DisplayName="[867382739] Create input" sap2010:WorkflowViewState.IdRef="CreateDirectory_9" Path="[ArrConfig(&quot;root_input&quot;).ToString()]" />
+          <rac:CreateDirectory ContinueOnError="{x:Null}" DisplayName="[872146581] Create temp" sap2010:WorkflowViewState.IdRef="CreateDirectory_7" Path="[ArrConfig(&quot;root_temp&quot;).ToString()]" />
+        </Sequence>
+      </rac:CommentOut.Body>
+    </rac:CommentOut>
+    <rac:LogMessage DisplayName="[447450630] Log Message" Level="Info" Message="[&quot;==========APP START WITH: &quot;+DateTime.Now.ToString(ArrConfig(&quot;date_format&quot;).ToString())+&quot;============&quot;]" sap2010:WorkflowViewState.IdRef="LogMessage_3" />
+    <rac:AppendLine DisplayName="[447456916] Append Line" FileName="[ArrConfig(&quot;root_log&quot;).ToString]" Text="[&quot;==========APP START WITH: &quot;+DateTime.Now.ToString(ArrConfig(&quot;date_format&quot;).ToString())+&quot;============&quot;]" sap2010:WorkflowViewState.IdRef="AppendLine_1" />
+    <sads:DebugSymbol.Symbol>d1xEOlxGUFRcVHJhaW5pbmdcRnJlc2hlckNvdXJzZVxSREFcYWthQm90LUZyYW1ld29ya09yaWdpbmFsXEZyYW1ld29ya1xJbml0QWxsQXBwbGljYXRpb24ueGFtbDpUA+kBDgIBAVUFWR4CAUlaBWEOAgFFYgVpDgIBQWoFcBACATFxBXgOAgEteQWAAQ4CASiBAQWIAQ4CASOJAQWQAQ4CAR6RAQWYAQ4CARmZAQWgAQ4CARShAQWoAQ4CAQ+pAQWwAQ4CAQuxAQWxAdMBAgEIsgEF5QEWAgEH5gEF5gGKAgIBBecBBecBsAICAQJVygFV6gECAUpfMl9HAgFIXDNcPgIBRmcyZ2cCAURkM2RLAgFCawdr2gECAT5sB2zVAQIBO20HbdkBAgE4bgdu1wECATVvB2/dAQIBMnYydqQBAgEwczNzSgIBLn4yfnUCASt7M3tNAgEphgEyhgFkAgEmgwEzgwFNAgEkjgEyjgFdAgEhiwEziwFLAgEflgEylgFjAgEckwEzkwFMAgEangEyngFiAgEXmwEzmwFLAgEVpgEypgFmAgESowEzowFPAgEQrgEyrgFHAgEOqwEzqwFNAgEMsQEqsQEwAgEKsQGJAbEB0AECAQnmAVDmAdgBAgEG5wF25wH+AQIBBOcBROcBcAIBA2ssazICAUBrjAFr1wECAT9sLGwyAgE9bI0BbNIBAgE8bSxtMgIBOm2PAW3WAQIBOW4sbjICATdujgFu1AECATZvLG8yAgE0b5EBb9oBAgEz</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_2" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="CreateDirectory_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="CreateDirectory_2" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="CreateDirectory_3" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="CreateDirectory_4" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="CreateDirectory_5" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="313.6,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="CreateDirectory_6" sap:VirtualizedContainerService.HintSize="313.6,22.4" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Assign_11" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="313.6,92.8" />
+      <sap2010:ViewStateData Id="Assign_12" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_13" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="Assign_14" sap:VirtualizedContainerService.HintSize="313.6,60.8" />
+      <sap2010:ViewStateData Id="CreateDirectory_8" sap:VirtualizedContainerService.HintSize="313.6,22.4" />
+      <sap2010:ViewStateData Id="CreateDirectory_9" sap:VirtualizedContainerService.HintSize="313.6,22.4" />
+      <sap2010:ViewStateData Id="CreateDirectory_7" sap:VirtualizedContainerService.HintSize="313.6,22.4" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,936">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CommentOut_1" sap:VirtualizedContainerService.HintSize="313.6,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_3" sap:VirtualizedContainerService.HintSize="313.6,92.8" />
+      <sap2010:ViewStateData Id="AppendLine_1" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336,1729.6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InitAllApplication_1" sap:VirtualizedContainerService.HintSize="376,1889.6" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

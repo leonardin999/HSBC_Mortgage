@@ -1,0 +1,18 @@
+{
+  "root_path": "E:\\AkaBots\\Common AKABots Frameworks\\",
+  "root_log": "E:\\AkaBots\\Common AKABots Frameworks\\Data\\Log\\Log_2022-06-24 153203.txt",
+  "root_images": "E:\\AkaBots\\Common AKABots Frameworks\\Data\\Log\\Images\\",
+  "root_output": "E:\\AkaBots\\Common AKABots Frameworks\\Data\\Output\\",
+  "root_data": "E:\\AkaBots\\Common AKABots Frameworks\\Data\\",
+  "root_input": "E:\\AkaBots\\Common AKABots Frameworks\\Data\\Input\\",
+  "root_temp": "E:\\AkaBots\\Common AKABots Frameworks\\Data\\Temp\\",
+  "root_template": "E:\\AkaBots\\Common AKABots Frameworks\\Data\\Template\\",
+  "date_format": "yyyy-MM-dd HHmmss",
+  "Config Key": "Config Value",
+  "SYSTEM_PAGE_ACCESS_URL": "",
+  "ENABLE_SEND_ERROR_MAIL": "Enable",
+  "OUTLOOK_ACCOUNT_USE_SEND": "Auto Detect",
+  "EMAIL_RECIPIENTS_RESULTS_WHEN_SUCCESSFUL": "BinhPH2@fsoft.com.vn;DatTHQ@fsoft.com.vn",
+  "EMAIL_RECIPIENTS_RESULTS_WHEN_ERROR": "BinhPH2@fsoft.com.vn;DatTHQ@fsoft.com.vn",
+  "CREDENTIAL_NAME": "[RPA.BotName].ServiceNowCredentials"
+}

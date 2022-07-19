@@ -1,0 +1,140 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="CallVBAExample"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
+ xmlns:rab="clr-namespace:RCA.Activities.Browser;assembly=RCA.Activities.Browser"
+ xmlns:rac="clr-namespace:RCA.Activities.Core;assembly=RCA.Activities.Core"
+ xmlns:rae="clr-namespace:RCA.Activities.Excel;assembly=RCA.Activities.Excel"
+ xmlns:re="clr-namespace:RCA.Excel;assembly=RCA.Activities.Excel"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ArrConfig" Type="InArgument(njl:JToken)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>CallVBAExample_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json.Converters</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Core</AssemblyReference>
+      <AssemblyReference>RCA.Activities.OCR</AssemblyReference>
+      <AssemblyReference>Aka.RPA.Python</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Excel</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Java</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Word</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Browser</AssemblyReference>
+      <AssemblyReference>RCA.Activities.IE</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Windows</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Mail</AssemblyReference>
+      <AssemblyReference>RCA.Activities.GSuite</AssemblyReference>
+      <AssemblyReference>RCA.Activities.FTP</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>RCA.Activities.SAP</AssemblyReference>
+      <AssemblyReference>RCA.Activities.ActiveDirectory</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Catia</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>RCA.Activities.PCOMM</AssemblyReference>
+      <AssemblyReference>System.Interactive.Async</AssemblyReference>
+      <AssemblyReference>RCA.Activities.NativeBrowser</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CallVBAExample" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <rab:Click Browser="{x:Null}" Comments="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" SearchParameter="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="False" DisplayName="[898318460] Click(B)" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifier="None" MouseButton="MOUSE_LEFT" SearchMethod="ID" Selector="&lt;html omit:app='' omit:title='' /&gt;&lt;webctrl id='' name='' omit:class='' xpath='//*[@id=&amp;quot;contact-btn&amp;quot;]/span/span' tag='' /&gt;" TimeoutMS="30000" WaitVisible="False" />
+    <rab:InjectJs Browser="{x:Null}" LastElement="{x:Null}" LastLocator="{x:Null}" ScriptCode="{x:Null}" ScriptOutput="{x:Null}" ContinueOnError="False" DisplayName="[364928809] Inject Javascript(B)" sap2010:WorkflowViewState.IdRef="InjectJs_1" />
+    <rae:ExcelApplicationScope ExcelProperties="{x:Null}" Password="{x:Null}" AutoSave="True" BreakLinks="False" DisplayName="[799540052] Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="[ArrConfig(&quot;root_template&quot;).ToString()+&quot;\Report_Template.xlsx&quot;]">
+      <rae:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="re:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="re:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="[799543048] Do" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="IsResult" />
+              <Variable x:TypeArguments="scg:List(x:Object)" Name="ArrMacroVars" />
+            </Sequence.Variables>
+            <rac:InvokeWorkflowFile ContinueOnError="{x:Null}" WorkflowTimeout="{x:Null}" DisplayName="[159760625] Invoke Workflow File" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" WorkflowFileName="Framework\ImportVBAModule.xaml">
+              <rac:InvokeWorkflowFile.Arguments>
+                <InArgument x:TypeArguments="x:String" x:Key="activeFileName">Report_Template.xlsx</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="vbModulePath">[ArrConfig("root_template").ToString+"FPTMarcoShareModule.bas"]</InArgument>
+              </rac:InvokeWorkflowFile.Arguments>
+            </rac:InvokeWorkflowFile>
+            <rae:ExecuteMacro ContinueOnError="{x:Null}" MacroOutput="{x:Null}" DisplayName="[161233841] Execute Macro" sap2010:WorkflowViewState.IdRef="ExecuteMacro_1" MacroName="RunTest" MacroParameters="[{&quot;&quot;}]" />
+          </Sequence>
+        </ActivityAction>
+      </rae:ExcelApplicationScope.Body>
+    </rae:ExcelApplicationScope>
+    <sads:DebugSymbol.Symbol>d4MBRDpcRlBUXFRyYWluaW5nXEZyZXNoZXJDb3Vyc2VcVWx0aW1hdGVNYXRlcmlhbFxha2FCb3QtRnJhbWV3b3JrT3JpZ2luYWxcYWthQm90LUZyYW1ld29ya09yaWdpbmFsXENvbW1vblxFeGFtcGxlXENhbGxWQkFFeGFtcGxlLnhhbWwRWQNzDgIBAVoFWocEAgEOWwVb+AECAQxcBXEhAgECWsUCWt4DAgERWukDWvADAgEQWqkBWrABAgEPW5IBW5kBAgENXOsBXMACAgELYgtuFgIBA2cNbCYCAQdtDW3jAQIBBGpNaowBAgEKZ9IBZ/IBAgEJaU9pYwIBCG20AW29AQIBBm3OAW3gAQIBBQ==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Click_1" sap:VirtualizedContainerService.HintSize="414.4,120" />
+      <sap2010:ViewStateData Id="InjectJs_1" sap:VirtualizedContainerService.HintSize="414.4,59.2" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="313.6,88" />
+      <sap2010:ViewStateData Id="ExecuteMacro_1" sap:VirtualizedContainerService.HintSize="313.6,22.4" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336,275.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_1" sap:VirtualizedContainerService.HintSize="414.4,384" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="436.8,768">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CallVBAExample_1" sap:VirtualizedContainerService.HintSize="476.8,848" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

@@ -1,0 +1,299 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="RetryGettingAsset"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json"
+ xmlns:rac="clr-namespace:RCA.Activities.Core;assembly=RCA.Activities.Core"
+ xmlns:rae="clr-namespace:RCA.Activities.Excel;assembly=RCA.Activities.Excel"
+ xmlns:re="clr-namespace:RCA.Excel;assembly=RCA.Activities.Excel"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sd="clr-namespace:System.Data;assembly=System.Data"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ArrConfig" Type="InOutArgument(njl:JToken)" />
+    <x:Property Name="ArrAsset" Type="InOutArgument(njl:JToken)" />
+    <x:Property Name="strAssetName" Type="InArgument(x:String)" />
+    <x:Property Name="strConfigName" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>RetryGettingAsset_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Core</AssemblyReference>
+      <AssemblyReference>RCA.Activities.OCR</AssemblyReference>
+      <AssemblyReference>Aka.RPA.Python</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Excel</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Java</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Word</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Browser</AssemblyReference>
+      <AssemblyReference>RCA.Activities.IE</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Windows</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Mail</AssemblyReference>
+      <AssemblyReference>RCA.Activities.GSuite</AssemblyReference>
+      <AssemblyReference>RCA.Activities.FTP</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>RCA.Activities.SAP</AssemblyReference>
+      <AssemblyReference>RCA.Activities.ActiveDirectory</AssemblyReference>
+      <AssemblyReference>RCA.Activities.Catia</AssemblyReference>
+      <AssemblyReference>RCA.Activities.PCOMM</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="RetryGettingAsset" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="intDelayCounter" />
+      <Variable x:TypeArguments="x:String" Name="strOutputAsset" />
+    </Sequence.Variables>
+    <Assign DisplayName="[339093951] Assign" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[intDelayCounter]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+      </Assign.Value>
+    </Assign>
+    <DoWhile DisplayName="[339096943] Do While" sap2010:WorkflowViewState.IdRef="DoWhile_1" Condition="[strOutputAsset=&quot;Cannot get asset&quot; and intDelayCounter &lt; 10]">
+      <Sequence DisplayName="[339108911] Sequence" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Assign DisplayName="[414586018] Assign" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[strOutputAsset]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">
+              <Literal x:TypeArguments="x:String" Value="" />
+            </InArgument>
+          </Assign.Value>
+        </Assign>
+        <rac:InvokeWorkflowFile ContinueOnError="{x:Null}" WorkflowTimeout="{x:Null}" DisplayName="[339110906] Invoke Workflow File" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" WorkflowFileName="Framework\CenterAsset.xaml">
+          <rac:InvokeWorkflowFile.Arguments>
+            <InOutArgument x:TypeArguments="njl:JToken" x:Key="ArrConfig">[ArrConfig]</InOutArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="strAssetName">[strAssetName]</InArgument>
+            <OutArgument x:TypeArguments="x:String" x:Key="strOutputAsset">[strOutputAsset]</OutArgument>
+          </rac:InvokeWorkflowFile.Arguments>
+        </rac:InvokeWorkflowFile>
+        <Assign DisplayName="[339112900] Assign" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Int32">[intDelayCounter]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Int32">[intDelayCounter +1]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </Sequence>
+    </DoWhile>
+    <If Condition="[intDelayCounter &gt;= 10]" DisplayName="[339115892] If" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence DisplayName="[339123871] Sequence" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <rac:LogMessage DisplayName="[339125866] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Get asset fail after 10 tries, using local config&quot;]" />
+          <Assign DisplayName="[339127860] Assign" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[strOutputAsset]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[ArrAsset(strConfigName).ToString]</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="[645425168] Update center value" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <rac:LogMessage DisplayName="[646314782] Log Message" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Get asset success, update to local asset&quot;]" />
+          <rae:ExcelApplicationScope ExcelProperties="{x:Null}" Password="{x:Null}" AutoSave="True" BreakLinks="False" DisplayName="[671231423] Excel Application Scope" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="[ArrConfig(&quot;root_data&quot;).ToString()+&quot;Config.xlsx&quot;]">
+            <rae:ExcelApplicationScope.Body>
+              <ActivityAction x:TypeArguments="re:WorkbookApplication">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="re:WorkbookApplication" Name="ExcelWorkbookScope" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="[671233397] Do" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataTable" Name="ArrLocalAsset" />
+                    <Variable x:TypeArguments="x:Int32" Name="intRowID" />
+                  </Sequence.Variables>
+                  <rae:ExcelReadRange AddHeaders="True" DataTable="[ArrLocalAsset]" DisplayName="[846989591] Excel Read Range" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" PreserveFormat="False" Range="A2" SheetName="CONFIG_ASSET" />
+                  <rac:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[ArrLocalAsset]" DisplayName="[950747712] Lookup DataTable" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="Asset Name" LookupValue="[strConfigName]" RowIndex="[intRowID]" />
+                  <If Condition="[intRowID=-1]" DisplayName="[978841934] If" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence DisplayName="[105072816] Sequence" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="sd:DataRow" Name="newRow" />
+                        </Sequence.Variables>
+                        <Assign DisplayName="[105074810] Assign" sap2010:WorkflowViewState.IdRef="Assign_6">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="sd:DataRow">[newRow]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="sd:DataRow">[ArrLocalAsset.NewRow]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign DisplayName="[128360807] Assign" sap2010:WorkflowViewState.IdRef="Assign_7">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[newRow("Asset Name")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Object">[strConfigName]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign DisplayName="[143743356] Assign" sap2010:WorkflowViewState.IdRef="Assign_8">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[newRow("Asset value")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Object">[strOutputAsset]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <rac:AddDataRow ArrayRow="{x:Null}" DataRow="[newRow]" DataTable="[ArrLocalAsset]" DisplayName="[105076805] Add Data Row" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Assign DisplayName="[229459670] Assign" sap2010:WorkflowViewState.IdRef="Assign_9">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Object">[ArrLocalAsset.Rows(intRowID)("Asset value")]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Object">[strOutputAsset]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </If.Else>
+                  </If>
+                  <rae:ExcelWriteRange AddHeaders="True" DataTable="[ArrLocalAsset]" DisplayName="[261999986] Excel Write Range" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="CONFIG_ASSET" StartingCell="A2" />
+                </Sequence>
+              </ActivityAction>
+            </rae:ExcelApplicationScope.Body>
+          </rae:ExcelApplicationScope>
+        </Sequence>
+      </If.Else>
+    </If>
+    <Assign DisplayName="[339130852] Assign" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="njl:JToken">[ArrConfig(strConfigName)]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="njl:JToken">[strOutputAsset]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <sads:DebugSymbol.Symbol>d1BDOlxVc2Vyc1xBTE1CT1QxXERlc2t0b3BcRkEuQUxNLlR1RG9uZ1h1YXRETENvZ25vc1xDb21tb25cUmV0cnlHZXR0aW5nQXNzZXQueGFtbEJbA+ABDgIBAWAFZw4CAVloBYQBDwIBQ4UBBdYBCgIBCNcBBd4BDgIBAmUvZTACAVxiMGJBAgFaaGdosgECAVZpB4MBEgIBRIUBE4UBLwIBCYcBCZEBFAIBPJQBCdQBFAIBC9wBMtwBQgIBBtkBM9kBTQIBA2oJcxICAVJ0CXoiAgFKewmCARICAUWIAQuIAckBAgFBiQELkAEUAgE9lQELlQHAAQIBOpYBC9MBJwIBDHAPcD4CAVVsNWxFAgFTdkt2VgIBUHdJd1cCAU54THhcAgFMdM4BdOoBAgFLgAEzgAFHAgFIfTR9RQIBRogBhQGIAcYBAgFCjgE2jgFYAgFAiwE3iwFHAgE+lQGFAZUBvQECATuWAfEBlgG4AgIBOZwBEdABHAIBDaEBE6EB8AECATSiAROiAZoDAgEsowETzgEYAgETzwETzwHjAQIBDqEBQ6EBVAIBN6EB0AGhAdQBAgE2oQHfAaEB7QECATWiAYsDogGXAwIBMqIB8AKiAYEDAgEwogHXAqIB4wICAS+iAdUBogHmAQIBLaMBIaMBMAIBFKUBF8IBIgIBGsUBF8wBIAIBFs8B3AHPAeABAgESzwFEzwFVAgEQzwHAAc8BzgECAQ+pARmwASICASixARm4ASICASS5ARnAASICASDBARnBAcQBAgEbygFCygFSAgEYxwFDxwFwAgEXrgFGrgFcAgErqwFHqwFPAgEptgFEtgFTAgEmswFFswFbAgElvgFEvgFUAgEiuwFFuwFcAgEhwQFFwQFPAgEewQFawQFrAgEc</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="950,60" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="314,87" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336,411">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DoWhile_1" sap:VirtualizedContainerService.HintSize="950,575" />
+      <sap2010:ViewStateData Id="LogMessage_1" sap:VirtualizedContainerService.HintSize="314,93" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="314,60" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="336,317">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="LogMessage_2" sap:VirtualizedContainerService.HintSize="567,93" />
+      <sap2010:ViewStateData Id="ExcelReadRange_1" sap:VirtualizedContainerService.HintSize="531,59" />
+      <sap2010:ViewStateData Id="LookupDataTable_1" sap:VirtualizedContainerService.HintSize="531,22" />
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_7" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="AddDataRow_1" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="264,446">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="242,60" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="531,595" />
+      <sap2010:ViewStateData Id="ExcelWriteRange_1" sap:VirtualizedContainerService.HintSize="531,87" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="553,1007">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ExcelApplicationScope_1" sap:VirtualizedContainerService.HintSize="567,1116" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="589,1373">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="950,1523">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="950,60" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="972,2462">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RetryGettingAsset_1" sap:VirtualizedContainerService.HintSize="1012,3022" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
